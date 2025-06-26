@@ -1,7 +1,13 @@
 <section class="mt-5">
 
-  <country-search-input placeholder="Search by capital of my country" (value)="onSearch($event)" />
+  <country-search-input placeholder="Search by capital of my country" (value)="query.set($event)" />
 
-  <country-list />
+
+  @if (countryResource.error()) {
+  <h3>{{countryResource.error()}}</h3>
+  } @if (countryResource.hasValue()) {
+  <country-list [countries]="countryResource.value()" />
+
+  }
 
 </section>
