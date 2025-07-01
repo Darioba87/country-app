@@ -1,7 +1,11 @@
 <section class="mt-5">
 
-  <country-search-input placeholder="Search by country of my country" />
+  <country-search-input placeholder="Search by country of my country" (value)="query.set($event)" />
 
-  <country-list [countries]="[]" />
+  @if (countryResource.error()) {
+  <h3>{{countryResource.error()}}</h3>
+  } @if (countryResource.hasValue()) {
+  <country-list [countries]="countryResource.value()" />
+  }
 
 </section>

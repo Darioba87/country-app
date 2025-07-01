@@ -14,6 +14,11 @@ export class CountryService {
 
   private http = inject(HttpClient);
 
+  /**
+   * Search by capital
+   * @param query
+   * @returns
+   */
   searchByCapital(query: string): Observable<Country[]> {
     query = query.toLowerCase();
 
@@ -22,9 +27,25 @@ export class CountryService {
         map(resp => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
         catchError(error => {
           console.log(error);
+          return throwError(() => new Error(`Could not obtain capitals with the query ${query}`))
+        })
+      )
+  }
+
+  searchByCountry(query: string) {
+    query = query.toLocaleLowerCase();
+
+    return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`)
+      .pipe(
+        map(resp => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
+        catchError(error => {
+          console.log(error);
+
           return throwError(() => new Error(`Could not obtain countries with the query ${query}`))
         })
       )
+
+
   }
 
 }
