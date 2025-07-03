@@ -1,0 +1,41 @@
+<!-- Imagen - 50% -->
+
+
+
+
+
+
+<div class="container mx-auto px-5 flex flex-col items-center space-y-4 mb-4">
+  <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img alt="daisy" [src]="country().flagSvg" />
+    </div>
+    <div class="diff-item-2" role="img">
+      <img alt="daisy" [src]="country().flagSvg" class="blur-md" />
+    </div>
+    <div class="diff-resizer"></div>
+  </figure>
+  <!--Info-->
+  <div class="stats shadow">
+    <div class="stat">
+
+      <div class="stat-title">Population</div>
+      <div class="stat-value">{{ country().population | number }}</div>
+      <div class="stat-desc">Since {{currentYear()}} </div>
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-title">Name</div>
+      <div class="stat-value">{{country().name}}</div>
+      <div class="stat-desc">{{country().region}}</div>
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-title">Subregion</div>
+      <div class="stat-value">{{country().subRegion}}</div>
+      <div class="stat-desc">{{country().region}}</div>
+    </div>
+  </div>
+</div>

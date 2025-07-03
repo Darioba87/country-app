@@ -9,8 +9,10 @@ export class CountryMapper {
       cca2: restCountry.cca2,
       flag: restCountry.flag,
       flagSvg: restCountry.flags.svg,
-      name: restCountry.demonyms.eng.f,
-      population: restCountry.population
+      name: restCountry.name.common,
+      population: restCountry.population,
+      region: restCountry.region,
+      subRegion: restCountry.subregion,
     }
   }
   // static Rescountry => Country[]
