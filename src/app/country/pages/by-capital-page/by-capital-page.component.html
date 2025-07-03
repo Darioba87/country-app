@@ -3,11 +3,7 @@
   <country-search-input placeholder="Search by capital of my country" (value)="query.set($event)" />
 
 
-  @if (capitalResource.error()) {
-  <h3>{{capitalResource.error()}}</h3>
-  } @if (capitalResource.hasValue()) {
-  <country-list [countries]="capitalResource.value()" />
-
-  }
+  <country-list [countries]="capitalResource.value() ?? []" [errorMessage]="capitalResource.error()"
+    [isEmpty]="capitalResource.value()?.length === 0" [isLoading]="capitalResource.isLoading()" />
 
 </section>

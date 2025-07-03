@@ -28,7 +28,30 @@
           class="link-primary cursor-pointer">More info...</a>
       </td>
     </tr>
+    }
 
+    @if (errorMessage()) {
+    <tr>
+      <td coolspan="8" class="text-center">
+        {{errorMessage()}}
+      </td>
+    </tr>
+    }
+    <!-- -->
+    @if (countries().length === 0 && !isLoading()) {
+    <tr>
+      <td coolspan="8" class="text-center">
+        no results found
+      </td>
+    </tr>
+    }
+    <!---->
+    @if (isLoading()) {
+    <tr>
+      <td coolspan="8" class="text-center">
+        <span class="loading loading-spinner text-success"></span>
+      </td>
+    </tr>
     }
   </tbody>
 </table>
